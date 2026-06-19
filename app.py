@@ -67,6 +67,8 @@ async def analyze_resume(
     2. Strengths
     3. Weaknesses
     4. Improvements
+
+    Also at the end, see the resume from a recruiter's perspective and return your thoughts on what you would decide. It should be constructive criticism.
     """
 
     response = client.chat.completions.create(
