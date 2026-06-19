@@ -36,7 +36,8 @@ jobs:
             sudo docker pull ${{ secrets.DOCKER_USERNAME }}/ai-resume-analyzer:latest
             sudo docker stop ai-resume-analyzer || true
             sudo docker rm ai-resume-analyzer || true
-            sudo fuser -k 8000/tcp || true
+            sudo docker ps -q --filter "publish=8000" | xargs -r sudo docker stop
+            sudo docker ps -aq --filter "publish=8000" | xargs -r sudo docker rm
             sudo docker run -d \
               --restart unless-stopped \
               -p 127.0.0.1:8000:8000 \
